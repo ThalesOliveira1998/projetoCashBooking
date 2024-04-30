@@ -1,0 +1,6 @@
+- nomes de arquivos no seguinte padrão:(kebab-case)
+-> cadastrar-cartao.ts
+
+- todas as telas da minha aplicação terão o método "exibir"
+
+- todas os fluxos da minha aplicação terão o método "executar"
