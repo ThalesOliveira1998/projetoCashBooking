@@ -1,4 +1,4 @@
-import Gasto from "../nucleo/dados/gasto"
+import Gasto from "../nucleo/dados/operacoes/gasto"
 
 export default class GastoBD {
     private static lista: Gasto[] = []

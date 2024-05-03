@@ -1,4 +1,4 @@
-import Cartao from "../nucleo/dados/cartao";
+import Cartao from "../nucleo/dados/operacoes/cartao";
 
 export default class CartaoBD {
     private static lista: Cartao[] = []

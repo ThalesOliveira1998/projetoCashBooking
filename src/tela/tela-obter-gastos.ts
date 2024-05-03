@@ -1,4 +1,4 @@
-import ObterGastos from "../nucleo/fluxos/obter-gastos";
+import ObterGastos from "../nucleo/fluxos/obter/obter-gastos";
 
 export default class TelaObterGastos {
     exibir(){    
@@ -7,7 +7,7 @@ export default class TelaObterGastos {
 
        const gastos = new ObterGastos().executar()
        for(const gasto of gastos){
-        console.log(`${gasto.id} - ${gasto.nome} - ${gasto.localDoGasto} - ${gasto.tipoDoGasto} - ${gasto.valorDoGasto}`)
+        console.log(`${gasto.id} - ${gasto.nome} - ${gasto.localDoGasto} - ${gasto.tipoDoGasto} - ${gasto.valorDoGasto} - ${gasto.datetime}`)
        }
     
     }

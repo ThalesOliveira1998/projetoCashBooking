@@ -1,6 +1,6 @@
-import { TipoGasto } from './../nucleo/dados/tipo-gasto';
+import { TipoGasto } from './../nucleo/dados/tipos/tipo-gasto';
 import Prompt from "prompt-sync";
-import CadastrarGasto from "../nucleo/fluxos/cadastrar-gasto";
+import CadastrarGasto from "../nucleo/fluxos/cadastros/cadastrar-gasto";
 
 export default class TelaCadastrarGasto {
     private prompt = Prompt();
@@ -10,36 +10,57 @@ export default class TelaCadastrarGasto {
         console.log("-----------");
 
         const nomeGasto = this.prompt("Informe o nome do gasto: ");
-        const tipoGastoString = this.prompt("Informe o tipo do gasto: ");
+        console.log("Prompt: press 1 for alimentacao");
+        console.log("Prompt: press 2 for transporte");
+        const tipoGastoChoice = this.prompt("Informe o tipo do gasto (1 for alimentacao, 2 for transporte): ");
 
-        // Assuming you have a method to parse string to TipoGasto
-        const tipoGasto: TipoGasto | null = this.parseTipoGasto(tipoGastoString);
+        const tipoGasto = this.parseTipoGasto(tipoGastoChoice);
 
         if (tipoGasto !== null) {
             const valor = this.prompt("Informe o valor do gasto: ");
             const local = this.prompt("Informe o local do gasto: ");
+            console.log("\nSelecione o registro em time")
+            const datetime = this.promptUserForDateTime();
 
-            new CadastrarGasto().executar(nomeGasto, tipoGasto, valor, local);
+
+            new CadastrarGasto().executar(nomeGasto, tipoGasto, valor, local, datetime);
             console.log("Gasto cadastrado com sucesso ");
         } else {
             console.log("Tipo de gasto inválido.");
         }
     }
+    
 
     private parseTipoGasto(tipoGastoString: string): TipoGasto | null {
-        // Implement logic to parse string to TipoGasto enum
-        // Return null if the string does not match any type
         switch (tipoGastoString.toLowerCase()) {
-            case 'alimentacao':
+            case '1':
                 return TipoGasto.ALIMENTACAO;
-            case 'transporte':
+            case '2':
                 return TipoGasto.TRANSPORTE;
-            // Add cases for other types if needed
             default:
                 return null;
         }
     }
+    private promptUserForDateTime(): Date {
+        const choice = Number(this.prompt("Escolha uma opção:\n1) Data e hora atual\n2) Escolher data (dd-mm-yyyy hh:mm)\n Opção:"));
+        if (choice === 1) {
+            return new Date(); // Return current date and time
+        } else if (choice === 2) {
+            const chosenDateTime = this.prompt("Informe a data e hora (dd-mm-yyyy hh:mm):");
+            const [datePart, timePart] = chosenDateTime.split(' ');
+            const [day, month, year] = datePart.split('-').map(Number);
+            const [hour, minute] = timePart.split(':').map(Number);
+            return new Date(year, month - 1, day, hour, minute); // Return user-chosen date and time
+        } else {
+            console.log("Opção inválida. Utilizando data e hora atual por padrão.");
+            return new Date(); // Return current date and time by default
+             }
+    }
 }
+
+// Segue abaixo outra implementação do codigo
+// 
+// 
 // export default class TelaCadastrarGasto {
 //     private prompt = Prompt();
 //     private tipoGastoKeywords: { [keyword: string]: TipoGasto } = {
@@ -47,7 +68,6 @@ export default class TelaCadastrarGasto {
 //         "pizza": TipoGasto.ALIMENTACAO,
 //         "transporte": TipoGasto.TRANSPORTE,
 //         "gasolina": TipoGasto.TRANSPORTE,
-//         // Add more keywords and corresponding TipoGasto values as needed
 //     };
     
 //     exibir(){    

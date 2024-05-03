@@ -1,5 +1,5 @@
+import { TipoGasto } from './../tipos/tipo-gasto';
 import Id from "./id";
-import { TipoGasto } from "./tipo-gasto";
 
 export default class Gasto {
 
@@ -8,6 +8,7 @@ export default class Gasto {
     readonly tipoDoGasto: TipoGasto,
     readonly valorDoGasto: string,
     readonly localDoGasto: string,
+    readonly datetime: Date, 
     readonly id: string = Id.novo()) {}
 
 

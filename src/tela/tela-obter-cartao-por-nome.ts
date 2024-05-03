@@ -1,5 +1,5 @@
-import ObterCartoesPorNome from "../nucleo/fluxos/obter-cartoes-por-nome";
-import Cartao from "../nucleo/dados/cartao";
+import ObterCartoesPorNome from "../nucleo/fluxos/obter/obter-cartoes-por-nome";
+import Cartao from "../nucleo/dados/operacoes/cartao";
 
 
 

@@ -1,6 +1,6 @@
-import Cartao from "./cartao";
+import Cartao from "../operacoes/cartao";
 import Id from "./id";
-import { TipoRegistro } from "./tipo-registro";
+import { TipoRegistro } from "../tipos/tipo-registro";
 
 export default class Registro {
     constructor(
