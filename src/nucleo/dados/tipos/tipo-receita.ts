@@ -1,4 +1,4 @@
-export enum tipoReceita {
+export enum TipoReceita {
     SALARIO,
     INVESTIMENTO,
     EXTRA,

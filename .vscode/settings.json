@@ -3,5 +3,18 @@
        
         "typescript": "npx ts-node"
     
-    }
+    },
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "PG Local",
+            "database": "cashBook",
+            "username": "postgres",
+            "password": "1234",
+            "connectionTimeout": 30
+        }
+    ]
 }
